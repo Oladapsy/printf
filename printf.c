@@ -1,11 +1,14 @@
 #include "main.h"
 /**
- * main - the entry of the prinf function
+ * _printf - A function that emulates what the printf can do
  *
- * Return: int
+ * @format: since printf main function is formatting output,
+ * this will serve as the formatted symbol
+ *
+ * Return: the no of byte returned
  *
  */
-int main(void)
+int _printf(const char *format, ...)
 {
-
+		
 }
