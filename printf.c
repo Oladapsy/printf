@@ -24,23 +24,25 @@ int _printf(const char *format, ...)
 			printchar(format[i]);
 		else if (format[i] == '%' && format[i + 1] == 'c')
 		{
-			printchar(va_args(args, int));
+			printchar(va_arg(args, int));
 			i++;
 		}
 		else if (format[i] == '%' && format[i+ 1] == 's')
 		{
-			printstringret = printstring(va_args(args, char *));
+			printstringret = printstring(va_arg(args, char *));
 			printfret = (printstringret - 1);
 			i++;
 		}
 		else if (format[i] == '%' && format[i + 1] == '%')
 		{
-			printfchar('%');
+			printchar('%');
 			i++;
 		}
 		else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 		{
 			di_ret = printint(va_arg(args, int));
+			i++;
+			printfret += (di_ret - 1);
 		}
 		else
 		{
