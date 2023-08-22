@@ -10,8 +10,8 @@
  */
 int _printf(const char *format, ...)
 {
-	size_t printfret = 0, i, count;
-	size_t di_count = 0;
+	size_t printfret = 0, i, printstringret;
+	size_t di_ret = 0;
 
 	va_list args;
 
@@ -20,6 +20,34 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format)
+		if (format[i] != '%')
+			printchar(format[i]);
+		else if (format[i] == '%' && format[i + 1] == 'c')
+		{
+			printchar(va_args(args, int));
+			i++;
+		}
+		else if (format[i] == '%' && format[i+ 1] == 's')
+		{
+			printstringret = printstring(va_args(args, char *));
+			printfret = (printstringret - 1);
+			i++;
+		}
+		else if (format[i] == '%' && format[i + 1] == '%')
+		{
+			printfchar('%');
+			i++;
+		}
+		else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+		{
+			di_ret = printint(va_arg(args, int));
+		}
+		else
+		{
+			printchar('%');
+		}
+		printfret += 1;
 	}
+	va_end(args);
+	return (printfret);
 }
