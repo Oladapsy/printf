@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * printint - this function is written to print positive
+ * printint - this function is written  to print positive
  * and negative integers using recurssion
  *
  * @num: the number to be printed -ve or +ve
