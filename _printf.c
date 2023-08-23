@@ -1,55 +1,54 @@
 #include "main.h"
 /**
- * _printf - A function that emulates what the printf can do
+ * _printf - print formated text to output
  *
- * @format: since printf main function is formatting output,
- * this will serve as the formatted symbol
- *
- * Return: the no of byte returned
- *
+ * @format: the formated string
+ * Return: the no of bytes
  */
 int _printf(const char *format, ...)
 {
-	size_t printfret = 0, i, printstringret;
-	size_t di_ret = 0;
+	unsigned int pret = 0, ij, count, di_count = 0;
 
 	va_list args;
 
 	if (!format || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+
+	for (ij = 0; format[ij] != '\0'; ij++)
 	{
-		if (format[i] != '%')
-			printchar(format[i]);
-		else if (format[i] == '%' && format[i + 1] == 'c')
+		if (format[ij] != '%')
 		{
-			printchar(va_arg(args, int));
-			i++;
+			my_putchar(format[ij]);
 		}
-		else if (format[i] == '%' && format[i + 1] == 's')
+		else if (format[ij] == '%' && format[ij + 1] == 'c')
 		{
-			printstringret = printstring(va_arg(args, char *));
-			printfret = (printstringret - 1);
-			i++;
+			my_putchar(va_arg(args, int));
+			ij++;
 		}
-		else if (format[i] == '%' && format[i + 1] == '%')
+		else if (format[ij] == '%' && format[ij + 1] == 's')
 		{
-			printchar('%');
-			i++;
+			count = dee_puts(va_arg(args, char *));
+			pret += (count - 1);
+			ij++;
 		}
-		else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+		else if (format[ij] == '%' && (format[ij + 1] == '%'))
 		{
-			di_ret = printint(va_arg(args, int));
-			i++;
-			printfret += (di_ret - 1);
+			my_putchar('%');
+			ij++;
+		}
+		else if (format[ij + 1] == 'd' || format[ij + 1] == 'i')
+		{
+			di_count += _putint(va_arg(args, int));
+			ij++;
+			pret += (di_count - 1);
 		}
 		else
 		{
-			printchar('%');
+			my_putchar('%');
 		}
-		printfret += 1;
+		pret += 1;
 	}
 	va_end(args);
-	return (printfret);
+	return (pret);
 }
