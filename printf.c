@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			printchar(va_arg(args, int));
 			i++;
 		}
-		else if (format[i] == '%' && format[i+ 1] == 's')
+		else if (format[i] == '%' && format[i + 1] == 's')
 		{
 			printstringret = printstring(va_arg(args, char *));
 			printfret = (printstringret - 1);
