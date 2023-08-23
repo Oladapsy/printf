@@ -2,12 +2,11 @@
 #define _MAIN_H_
 
 #include <stdlib.h>
-#include <stdarg.h>
 #include <unistd.h>
+#include <stdarg.h>
 
-int printchar(char achar);
-int printstring(char *string);
+int _putint(int in);
 int _printf(const char *format, ...);
-int printint(int num);
-
+int my_putchar(char ch);
+int dee_puts(char *st);
 #endif
