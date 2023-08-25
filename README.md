@@ -4,7 +4,7 @@ It's purpose is to build the printf function and possibly all the argument or fo
 
 This codes were aimed not to do all it can but tackle only the mandatory part as there is limited time and i am busy with my college which we'll be working on this together.
 
-my name is the one and only: OLADAPO ODEDEYI OLAYINKA
+My name is the one and only: OLADAPO ODEDEYI OLAYINKA
 and my partner name is: OMOTOYOSI OLUWATOYIN
 
 All the way from NIGERIA, AFRICA, EARTH, UNIVERSE...
